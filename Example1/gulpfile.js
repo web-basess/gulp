@@ -30,7 +30,7 @@ var dPath = {
 
 //设置sass编译
 gulp.task("sass",function(){
-   return sass(sPath.sass) //获取原始scss路径
+    return sass(sPath.sass) //获取原始scss路径
         .pipe(concatCss('main.css')) //合并css文件
         .pipe(minify()) //css压缩
         .pipe(gulp.dest(dPath.css))  //输出css文件
@@ -42,7 +42,6 @@ gulp.task("js",function(){
     gulp.src(sPath.js) //获取原始JS路径
         .pipe(uglify()) //执行压缩
         .pipe(concatjs('main.js')) //合并JS文件
-        .pipe(uglify())  //JS压缩
         .pipe(gulp.dest(dPath.js)) //输出JS文件
         .pipe(browserSync.stream()); //自动刷新
 });
@@ -54,7 +53,7 @@ gulp.task("html", function() {
         .pipe(browserSync.stream()); //自动刷新
 });
 
-
+/*-----设置代码监测-----*/
 gulp.task("watch",['sass','html','js'],function(){
     browserSync.init({
         server:'./'
